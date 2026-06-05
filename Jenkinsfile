@@ -9,12 +9,6 @@ tools {
 
 stages {
 
-    stage('Git Checkout') {
-        steps {
-            git 'https://github.com/Khushburautu01/tutorialsninjaAutomation.git'
-        }
-    }
-
     stage('Build') {
         steps {
             bat 'mvn clean compile'
@@ -30,7 +24,7 @@ stages {
     stage('Generate Report') {
         steps {
             publishHTML([
-                allowMissing: false,
+                allowMissing: true,
                 alwaysLinkToLastBuild: true,
                 keepAll: true,
                 reportDir: 'target',
